@@ -1,0 +1,53 @@
+config defaultToCurrentScreen true
+# Shows app icons and background apps, spread icons in the same place
+config windowHintsShowIcons true
+
+bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN # use whatever keys you want
+
+# Abstract positions
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias tophalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
+alias bottomhalf move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
+alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+alias center move screenOriginX+screenSizeX/6;screenOriginY+screenSizeY/6 2*screenSizeX/3;2*screenSizeY/3
+alias bigCenter move screenOriginX+screenSizeX/12;screenOriginY+screenSizeY/12 10*screenSizeX/12;10*screenSizeY/12
+
+# Bind command+option+b to google chrome
+bind s:cmd;alt focus 'Slack'
+bind x:cmd;alt focus 'Spotify'
+bind c:cmd;alt focus 'Code'
+bind v:cmd;alt focus 'iTerm2'
+bind b:cmd;alt focus 'Google Chrome'
+
+# The triple keys
+alias triple ctrl;alt;cmd
+alias triple2 alt;ctrl;shift
+
+# Location bindings
+bind left:${triple} ${lefthalf}
+bind m:${triple} ${full}
+bind right:${triple} ${righthalf}
+bind up:${triple} ${tophalf}
+bind down:${triple} ${bottomhalf}
+bind c:${triple} ${center}
+bind v:${triple} ${bigCenter}
+bind down:${triple2} ${bottomleft}
+bind right:${triple2} ${bottomright}
+bind left:${triple2} ${topleft}
+bind up:${triple2} ${topright}
+
+# Grid
+bind g:${triple} grid padding:5 0:6,2 1:8,3
+
+# Monitor switching bindings
+bind right:alt,ctrl throw 1 resize
+bind left:alt,ctrl throw 0 resize
+
+# Resize Windows
+bind =:${triple} resize +5% +5%
+bind -:${triple} resize -5% -5%
